@@ -58,3 +58,4 @@ Options:
 
 ## Limitations:
 In the current implementation Server runs only for 60 seconds.
+Client's response buffer size is set to 128 bytes.
