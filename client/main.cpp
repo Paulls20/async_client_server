@@ -2,7 +2,7 @@
 #include <iostream>
 #include "tcp_client.hpp"
 
-int main(int argc, const char *argv[])
+int main(int argc, const char **argv)
 {
     uint16_t port_num = 3333;
     std::string ip_addr = "127.0.0.1";
@@ -44,7 +44,7 @@ int main(int argc, const char *argv[])
     do
     {
         std::cout << "Enter request: ";
-        std::cin >> request;
+        std::getline(std::cin >> std::ws, request);
         fizyr::tcp_client tc(ip_addr, port_num);
         tc.send_request(request + "\n");
     } while(request != "q");
