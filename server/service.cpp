@@ -90,7 +90,11 @@ std::string service::process_request(basio::streambuf& request) const
     BOOST_LOG_TRIVIAL(info) << "Request received: " << str;
 
     // return the response message.
-    return "Response\n";
+    std::stringstream ss;
+    ss << "Response:";
+    ss << str;
+    ss << " back\n";
+    return ss.str();
 }
 
 }
