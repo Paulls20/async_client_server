@@ -9,7 +9,7 @@ Command-line server and client in C++ using asynchronous communication using boo
 sudo apt -y install libboost-dev
 ```
 2. CMake >= 3.13
-3. Compiler which supports C++14 (Note: Currently tested only with GCC).
+3. Compiler which supports C++14 (_Note_: Currently tested only with GCC).
 
 ## Steps to build:
 
@@ -57,5 +57,5 @@ Options:
 ```
 
 ## Limitations:
-In the current implementation Server runs only for 60 seconds.
-Client's response buffer size is set to 128 bytes.
+1. In the current implementation Server runs only for 60 seconds.
+2. Client's response buffer size is set to 128 bytes.
