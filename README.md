@@ -29,7 +29,7 @@ cd ../bin
 ./async_server
 [2019-03-09 16:02:13.769580] [0x00007f68e0dfb740] [info]    Server Started. Listening to port 3333
 ```
-By default server starts listening to port 3333. But ofcourse you can change the port with --port arg as shown.
+By default server starts listening to port ```3333```. But ofcourse you can change the port with --port arg as shown.
 ```bash
 ./async_server  -h
 Options:
@@ -47,7 +47,7 @@ Port: 3333
 Enter request: Hello World
 Response:Hello World back
 ```
-By default the client connects to 127.0.0.1 and port 3333. Like the server, you can also start the client to connect to a different host and port as shown.
+By default the client connects to ```127.0.0.1``` and port ```3333```. Like the server, you can also start the client to connect to a different host and port as shown.
 ```bash
 ./async_client  -h
 Options:
