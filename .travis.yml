@@ -1,9 +1,15 @@
 language: cpp
 
+env:
+  global:
+    - CMAKE_PREFIX=$HOME/prebuilt/cmake ;
+    - CMAKE_LINUX_URL=https://cmake.org/files/v3.13/cmake-3.13.1-Linux-x86_64.sh ;
+ 
 matrix:
   include:
     - name: "gcc 7 Debug Coverage (ONLY_COVERAGE)"
       os: linux
+      dist: xenial
       sudo: false
       env: COVERAGE=1 CXX_EXE=/usr/bin/g++-7 CC_EXE=/usr/bin/gcc-7 GCOV=/usr/bin/gcov-7 CMAKE_OPTS="-DONLY_COVERAGE:BOOL=ON -DCMAKE_BUILD_TYPE:STRING=Debug"
       addons:
@@ -13,8 +19,13 @@ matrix:
           packages:
             - g++-7
 
+install:
+  mkdir -p "$CMAKE_PREFIX";
+  curl --insecure -L "$CMAKE_LINUX_URL" -o cmake-linux.sh ;
+  bash cmake-linux.sh --skip-license --prefix=$CMAKE_PREFIX ;
 
 script:
+  - export PATH=$CMAKE_PREFIX/bin:$PATH
   - $CXX_EXE --version
   - which cmake
   - cmake --version
