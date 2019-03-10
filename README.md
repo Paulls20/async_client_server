@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Paulls20/async_client_server.svg?branch=feature%2Fci)](https://travis-ci.org/Paulls20/async_client_server)
+
 # async_client_server
 
 Command-line server and client in C++ using asynchronous communication using boost ASIO.
