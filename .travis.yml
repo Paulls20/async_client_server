@@ -21,11 +21,14 @@ matrix:
             - libboost-dev
 
 install:
-  sudo apt -y install libboost-dev ;
   mkdir -p "$CMAKE_PREFIX";
   curl --insecure -L "$CMAKE_LINUX_URL" -o cmake-linux.sh ;
   bash cmake-linux.sh --skip-license --prefix=$CMAKE_PREFIX ;
 
+before_script:
+  - sudo apt-get update -qq
+  - sudo apt-get install libboost-all-dev
+  
 script:
   - export PATH=$CMAKE_PREFIX/bin:$PATH
   - $CXX_EXE --version
