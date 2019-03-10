@@ -21,7 +21,7 @@ matrix:
             - libboost-dev
 
 install:
-  sudo apt -y install libboost-dev
+  sudo apt -y install libboost-dev ;
   mkdir -p "$CMAKE_PREFIX";
   curl --insecure -L "$CMAKE_LINUX_URL" -o cmake-linux.sh ;
   bash cmake-linux.sh --skip-license --prefix=$CMAKE_PREFIX ;
