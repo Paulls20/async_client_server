@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Paulls20/async_client_server.svg?branch=feature%2Fci)](https://travis-ci.org/Paulls20/async_client_server)
+[![Build Status](https://travis-ci.org/Paulls20/async_client_server.svg?branch=feature%2Fserver)](https://travis-ci.org/Paulls20/async_client_server)
 
 # async_client_server
 
