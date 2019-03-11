@@ -11,6 +11,7 @@ constexpr uint8_t BUFFER_SIZE = 128;
 tcp_client::tcp_client(const std::string& ip_addr, uint16_t port) :
     ip_addr_(ip_addr), port_num_(port), work_(ios_), sock_(ios_)
 {
+    // Create a thread that operates completely asynchronously with respect to the rest of program.
     thread_ = std::make_unique<std::thread>([this](){ ios_.run(); });
 }
 
