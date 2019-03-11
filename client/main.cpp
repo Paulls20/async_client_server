@@ -6,16 +6,16 @@ int main(int argc, const char **argv)
 {
     uint16_t port_num;
     std::string ip_addr;
-    namespace po = boost::program_options;
+    namespace program_options = boost::program_options;
     try
     {
-        po::options_description desc{"Options"};
+        program_options::options_description desc{"Options"};
         desc.add_options()
             ("help,h", "Help screen")
-            ("port", po::value<float>()->default_value(3333), "Port")
-            ("ip", po::value<std::string>()->default_value("127.0.0.1"), "IP Address");
+            ("port", program_options::value<float>()->default_value(3333), "Port")
+            ("ip", program_options::value<std::string>()->default_value("127.0.0.1"), "IP Address");
 
-        po::variables_map vm;
+        program_options::variables_map vm;
         store(parse_command_line(argc, argv, desc), vm);
         notify(vm);
 
@@ -35,7 +35,7 @@ int main(int argc, const char **argv)
             std::cout << "Port: " << port_num << '\n';
         }
     }
-    catch (const po::error &ex)
+    catch (const program_options::error &ex)
     {
         std::cerr << ex.what() << '\n';
     }

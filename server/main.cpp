@@ -30,17 +30,17 @@ void start_server(uint16_t port_num)
 int main(int argc, const char **argv)
 {
     uint16_t port_num;
-    namespace po = boost::program_options;
+    namespace program_options = boost::program_options;
     try
     {
-        po::options_description desc{"Options"};
+        program_options::options_description desc{"Options"};
         desc.add_options()
             ("help,h", "Help screen")
-            ("port", po::value<uint16_t>()->default_value(3333), "Port Number");
+            ("port", program_options::value<uint16_t>()->default_value(3333), "Port Number");
 
-        po::variables_map vm;
-        po::store(po::parse_command_line(argc, argv, desc), vm);
-        po::notify(vm);
+        program_options::variables_map vm;
+        program_options::store(program_options::parse_command_line(argc, argv, desc), vm);
+        program_options::notify(vm);
 
         if (vm.count("help"))
         {
@@ -52,7 +52,7 @@ int main(int argc, const char **argv)
             port_num = vm["port"].as<uint16_t>();
         }
     }
-    catch (const po::error &ex)
+    catch (const program_options::error &ex)
     {
         std::cout << ex.what();
     }
