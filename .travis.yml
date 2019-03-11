@@ -1,0 +1,47 @@
+language: cpp
+
+env:
+  global:
+    - CMAKE_PREFIX=$HOME/prebuilt/cmake ;
+    - CMAKE_LINUX_URL=https://cmake.org/files/v3.13/cmake-3.13.1-Linux-x86_64.sh ;
+ 
+matrix:
+  include:
+    - name: "gcc 7 Debug Coverage (ONLY_COVERAGE)"
+      os: linux
+      dist: xenial
+      sudo: true
+      env: COVERAGE=1 CXX_EXE=/usr/bin/g++-7 CC_EXE=/usr/bin/gcc-7 GCOV=/usr/bin/gcov-7 CMAKE_OPTS="-DONLY_COVERAGE:BOOL=ON -DCMAKE_BUILD_TYPE:STRING=Debug"
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-7
+            - libboost-dev
+
+install:
+  mkdir -p "$CMAKE_PREFIX";
+  curl --insecure -L "$CMAKE_LINUX_URL" -o cmake-linux.sh ;
+  bash cmake-linux.sh --skip-license --prefix=$CMAKE_PREFIX ;
+
+before_script:
+  - sudo apt-get update -qq
+  - sudo apt-get install libboost-all-dev
+  
+script:
+  - export PATH=$CMAKE_PREFIX/bin:$PATH
+  - $CXX_EXE --version
+  - which cmake
+  - cmake --version
+  - export CXX=$CXX_EXE
+  - export CC=$CC_EXE
+  - echo $CXX
+  - echo $CMAKE_OPTS
+  - $CXX --version
+  - mkdir build
+  - cd build
+  - cmake  $CMAKE_OPTS ..
+  - VERBOSE=1 cmake --build . -- -j2
+
+
