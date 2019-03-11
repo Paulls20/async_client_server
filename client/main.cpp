@@ -45,7 +45,7 @@ int main(int argc, const char **argv)
     {
         std::cout << "Enter request: ";
         std::getline(std::cin >> std::ws, request);
-        async::tcp_client tc(ip_addr, port_num);
+        cppchallenge::tcp_client tc(ip_addr, port_num);
         tc.send_request(request + "\n");
     } while(request != "q");
 }

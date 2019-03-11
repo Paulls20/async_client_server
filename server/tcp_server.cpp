@@ -2,7 +2,7 @@
 #include "acceptor.hpp"
 #include <boost/log/trivial.hpp>
 
-namespace async
+namespace cppchallenge
 {
 
 tcp_server::tcp_server(uint16_t port_num, uint32_t thread_pool_size) :
@@ -20,13 +20,13 @@ bool tcp_server::do_init()
 {
     acc_->start();
     BOOST_LOG_TRIVIAL(info) << "Server Started. Listening to port " << port_num_;
-    return true;  // TODO: check should be done.
+    return true;  // TODO: check whether start() is successful.
 }
 
 bool tcp_server::do_close()
 {
     acc_->stop();
-    return true; // TODO: check should be done.
+    return true; // TODO: check whether stop() is successful.
 }
 
 }

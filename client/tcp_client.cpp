@@ -4,7 +4,7 @@
 #include <array>
 #include <iostream>
 
-namespace async
+namespace cppchallenge
 {
 constexpr uint8_t BUFFER_SIZE = 128;
 

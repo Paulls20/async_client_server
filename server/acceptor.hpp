@@ -4,7 +4,7 @@
 #include <boost/asio.hpp>
 #include <atomic>
 
-namespace async
+namespace cppchallenge
 {
 
 namespace basio = boost::asio;

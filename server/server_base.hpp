@@ -6,7 +6,7 @@
 #include <vector>
 #include <boost/asio.hpp>
 
-namespace async
+namespace cppchallenge
 {
 
 namespace basio = boost::asio;

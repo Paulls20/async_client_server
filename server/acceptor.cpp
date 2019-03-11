@@ -2,7 +2,7 @@
 #include "service.hpp"
 #include <boost/log/trivial.hpp>
 
-namespace async
+namespace cppchallenge
 {
 
 acceptor::acceptor(basio::io_service& ios, unsigned short port_num) :
