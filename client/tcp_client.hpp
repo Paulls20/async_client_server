@@ -4,7 +4,7 @@
 #include <boost/asio.hpp>
 #include <thread>
 
-namespace fizyr
+namespace async
 {
 
 namespace basio = boost::asio;

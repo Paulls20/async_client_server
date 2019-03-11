@@ -18,7 +18,7 @@ void start_server(uint16_t port_num)
     {
         thread_pool_size = DEFAULT_THREAD_POOL_SIZE;
     }
-    fizyr::tcp_server srv(port_num, thread_pool_size);
+    async::tcp_server srv(port_num, thread_pool_size);
     srv.start();
     std::this_thread::sleep_for(std::chrono::seconds(60));
 
@@ -29,7 +29,7 @@ void start_server(uint16_t port_num)
 
 int main(int argc, const char **argv)
 {
-    uint16_t port_num = 3333;
+    uint16_t port_num;
     namespace po = boost::program_options;
     try
     {

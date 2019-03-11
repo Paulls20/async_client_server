@@ -2,7 +2,7 @@
 
 #include <boost/log/trivial.hpp>
 
-namespace fizyr
+namespace async
 {
 
 service::service(std::shared_ptr<basio::ip::tcp::socket> sock) :

@@ -4,8 +4,8 @@
 
 int main(int argc, const char **argv)
 {
-    uint16_t port_num = 3333;
-    std::string ip_addr = "127.0.0.1";
+    uint16_t port_num;
+    std::string ip_addr;
     namespace po = boost::program_options;
     try
     {
@@ -45,7 +45,7 @@ int main(int argc, const char **argv)
     {
         std::cout << "Enter request: ";
         std::getline(std::cin >> std::ws, request);
-        fizyr::tcp_client tc(ip_addr, port_num);
+        async::tcp_client tc(ip_addr, port_num);
         tc.send_request(request + "\n");
     } while(request != "q");
 }

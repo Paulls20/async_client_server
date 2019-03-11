@@ -5,7 +5,7 @@
 
 #include <cstdint>
 
-namespace fizyr
+namespace async
 {
 
 class acceptor;

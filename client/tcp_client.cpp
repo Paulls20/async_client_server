@@ -4,7 +4,7 @@
 #include <array>
 #include <iostream>
 
-namespace fizyr
+namespace async
 {
 constexpr uint8_t BUFFER_SIZE = 128;
 

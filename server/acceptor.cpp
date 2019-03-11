@@ -2,7 +2,7 @@
 #include "service.hpp"
 #include <boost/log/trivial.hpp>
 
-namespace fizyr
+namespace async
 {
 
 acceptor::acceptor(basio::io_service& ios, unsigned short port_num) :

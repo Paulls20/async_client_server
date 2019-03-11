@@ -2,7 +2,7 @@
 #include "acceptor.hpp"
 #include <boost/log/trivial.hpp>
 
-namespace fizyr
+namespace async
 {
 
 tcp_server::tcp_server(uint16_t port_num, uint32_t thread_pool_size) :

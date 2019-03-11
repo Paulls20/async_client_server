@@ -1,7 +1,7 @@
 #include "server_base.hpp"
 #include <boost/log/trivial.hpp>
 
-namespace fizyr
+namespace async
 {
 
 server_base::server_base(uint32_t thread_pool_size) :
