@@ -6,8 +6,8 @@ namespace async
 {
 
 acceptor::acceptor(basio::io_service& ios, unsigned short port_num) :
-    ios_(ios),
-    acceptor_(ios_,
+    io_service_(ios),
+    acceptor_(io_service_,
               basio::ip::tcp::endpoint(
                   basio::ip::address_v4::any(),
                   port_num)),
@@ -28,7 +28,7 @@ void acceptor::stop()
 
 void acceptor::init_accept()
 {
-    auto sock = std::make_shared<basio::ip::tcp::socket>(basio::ip::tcp::socket(ios_));
+    auto sock = std::make_shared<basio::ip::tcp::socket>(basio::ip::tcp::socket(io_service_));
 
     auto accept_callback = [this, sock](
         const boost::system::error_code& error)

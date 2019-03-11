@@ -53,7 +53,7 @@ private:
         std::shared_ptr<basio::ip::tcp::socket> sock);
 
 private:
-    basio::io_service& ios_;
+    basio::io_service& io_service_;
     basio::ip::tcp::acceptor acceptor_;
     std::atomic<bool> is_stopped_;
 };

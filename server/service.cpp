@@ -6,7 +6,7 @@ namespace async
 {
 
 service::service(std::shared_ptr<basio::ip::tcp::socket> sock) :
-    sock_(std::move(sock))
+    tcp_socket_(std::move(sock))
 {
 }
 
@@ -20,7 +20,7 @@ void service::start_handling()
                             bytes_transferred);
     };
 
-    basio::async_read_until(*sock_.get(),
+    basio::async_read_until(*tcp_socket_.get(),
                             request_,
                             '\n',
                             req_callback);
@@ -53,7 +53,7 @@ void service::on_request_received(
     };
 
     // Initiate asynchronous write operation.
-    basio::async_write(*sock_.get(),
+    basio::async_write(*tcp_socket_.get(),
                        basio::buffer(response_),
                        res_callback);
 }

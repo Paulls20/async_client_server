@@ -37,9 +37,9 @@ public:
 private:
     std::string ip_addr_;
     uint16_t port_num_;
-    basio::io_service ios_;
+    basio::io_service io_service_;
     basio::io_service::work work_;
-    basio::ip::tcp::socket sock_;
+    basio::ip::tcp::socket tcp_socket_;
     std::unique_ptr<std::thread> thread_;
 };
 

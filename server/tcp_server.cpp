@@ -8,7 +8,7 @@ namespace async
 tcp_server::tcp_server(uint16_t port_num, uint32_t thread_pool_size) :
     server_base(thread_pool_size),
     port_num_(port_num),
-    acc_(std::make_unique<acceptor>(ios_, port_num_))
+    acc_(std::make_unique<acceptor>(io_service_, port_num_))
 {
 }
 

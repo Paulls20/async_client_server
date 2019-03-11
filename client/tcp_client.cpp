@@ -9,15 +9,15 @@ namespace async
 constexpr uint8_t BUFFER_SIZE = 128;
 
 tcp_client::tcp_client(const std::string& ip_addr, uint16_t port) :
-    ip_addr_(ip_addr), port_num_(port), work_(ios_), sock_(ios_)
+    ip_addr_(ip_addr), port_num_(port), work_(io_service_), tcp_socket_(io_service_)
 {
     // Create a thread that operates completely asynchronously with respect to the rest of program.
-    thread_ = std::make_unique<std::thread>([this](){ ios_.run(); });
+    thread_ = std::make_unique<std::thread>([this](){ io_service_.run(); });
 }
 
 tcp_client::~tcp_client()
 {
-    ios_.stop();
+    io_service_.stop();
     thread_->join();
 }
 
@@ -25,7 +25,7 @@ void tcp_client::send_request(const std::string& request)
 {
     try
     {
-        basio::ip::tcp::resolver resolver(ios_);
+        basio::ip::tcp::resolver resolver(io_service_);
 
         // The async_resolve operation returns the endpoint iterator as a future value.
         std::future<basio::ip::tcp::resolver::iterator> iter =
@@ -33,19 +33,19 @@ void tcp_client::send_request(const std::string& request)
                 {basio::ip::tcp::v4(), ip_addr_, std::to_string(port_num_)},
                 boost::asio::use_future);
 
-        std::future<void> connect_future = sock_.async_connect(*iter.get(),
+        std::future<void> connect_future = tcp_socket_.async_connect(*iter.get(),
                                                                boost::asio::use_future);
         connect_future.get();
 
         std::future<std::size_t> send_length =
-            sock_.async_send(boost::asio::buffer(request),
+            tcp_socket_.async_send(boost::asio::buffer(request),
                              boost::asio::use_future);
         // Other things can be done here while the send completes.
         send_length.get(); // blocks until the send is complete.
 
         std::array<char, BUFFER_SIZE> recv_buf;
         std::future<std::size_t> recv_length =
-            sock_.async_receive(
+            tcp_socket_.async_receive(
                 boost::asio::buffer(recv_buf),
                 boost::asio::use_future);
 

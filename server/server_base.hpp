@@ -56,7 +56,7 @@ protected:
 
     uint32_t thread_pool_size_;
     std::vector<std::unique_ptr<std::thread>> thread_pool_;
-    basio::io_service ios_;
+    basio::io_service io_service_;
     std::unique_ptr<basio::io_service::work> work_;
 };
 

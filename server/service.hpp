@@ -56,7 +56,7 @@ private:
     std::string process_request(basio::streambuf& request) const;
 
 private:
-    std::shared_ptr<basio::ip::tcp::socket> sock_;
+    std::shared_ptr<basio::ip::tcp::socket> tcp_socket_;
     std::string response_;
     basio::streambuf request_;
 };
